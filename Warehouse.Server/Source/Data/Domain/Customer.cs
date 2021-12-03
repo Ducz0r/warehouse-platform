@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Warehouse.Server.Domain
+namespace Warehouse.Server.Data.Domain
 {
     public class Customer
     {

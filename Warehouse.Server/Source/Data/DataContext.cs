@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using Warehouse.Server.Domain;
+using Warehouse.Server.Data.Domain;
 
-namespace Warehouse.Server
+namespace Warehouse.Server.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : DbContext, IDataContext
     {
         public DbSet<Customer> Customers { get; set; }
 
