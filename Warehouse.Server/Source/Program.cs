@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace WarehouseServer
+namespace Warehouse.Server
 {
     public class Program
     {

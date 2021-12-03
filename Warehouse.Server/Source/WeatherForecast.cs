@@ -1,6 +1,6 @@
 using System;
 
-namespace WarehouseServer
+namespace Warehouse.Server
 {
     public class WeatherForecast
     {
