@@ -40,7 +40,15 @@ namespace Warehouse.Server.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
         public async Task<IActionResult> IncreaseQuantity(Guid id, [FromBody]JsonElement json)
         {
-            var quantity = json.GetProperty("increase").GetInt32();
+            int quantity;
+
+            try
+            {
+                quantity = json.GetProperty("increase").GetInt32();
+            } catch (Exception ex) when (ex is KeyNotFoundException || ex is InvalidOperationException)
+            {
+                return BadRequest();
+            }
             
             var dataResponse = await _mediator.Send(new IncreaseCustomerQuantity.Request(id, quantity), CancellationToken.None);
             
