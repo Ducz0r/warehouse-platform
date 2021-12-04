@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersTableComponent } from './customers-table/customers-table.component';
+import { CustomersService } from './data/customers-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CustomersTableComponent } from './customers-table/customers-table.compo
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ])
   ],
-  providers: [],
+  providers: [CustomersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
