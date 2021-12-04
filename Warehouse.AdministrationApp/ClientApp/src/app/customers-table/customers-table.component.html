@@ -1,0 +1,16 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">GUID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="customer in customers">
+      <th scope="row">{{customer.guid}}</th>
+      <td>{{customer.name}}</td>
+      <td>{{customer.quantity}}</td>
+    </tr>
+  </tbody>
+</table>
