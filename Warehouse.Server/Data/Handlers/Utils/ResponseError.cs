@@ -2,6 +2,7 @@
 {
     public enum ResponseError
     {
-        ElementNotFound
+        ElementNotFound,
+        PasswordDoesNotMatch
     }
 }
