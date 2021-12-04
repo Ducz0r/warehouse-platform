@@ -26,8 +26,13 @@ namespace Warehouse.Server.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Get a list of all customers.
+        /// </summary>
+        /// <returns>Array of all customers</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IReadOnlyList<CustomerModel>))]
+        [Produces("application/json")]
         public async Task<IActionResult> Get()
         {
             var dataResponse = await _mediator.Send(new GetCustomers.Request(), CancellationToken.None);
@@ -35,9 +40,23 @@ namespace Warehouse.Server.Controllers
             return Ok(dataResponse.Object.Select(c => new CustomerModel(c)));
         }
 
+        /// <summary>
+        /// Increase individual customer's warehouse quantity.
+        /// </summary>
+        /// <param name="id">Customer's GUID</param>
+        /// <param name="json">Body</param>
+        /// <returns>The updated customer object</returns>
+        /// <remarks>
+        /// Request body must adhere to the following format:
+        /// {
+        ///     "increase": {quantity-increase-integer}
+        /// }
+        /// </remarks>
         [HttpPost("{id}/increase-quantity")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IReadOnlyList<CustomerModel>))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> IncreaseQuantity(Guid id, [FromBody]JsonElement json)
         {
             int quantity;
