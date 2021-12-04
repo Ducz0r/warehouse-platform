@@ -8,5 +8,10 @@ namespace Warehouse.Server.Data.Domain
         public string Name { get; set; }
         public string PasswordHash { get; set; }
         public int Quantity { get; set; }
+
+        public void IncreaseQuantity(int increase)
+        {
+            Quantity = Quantity + increase;
+        }
     }
 }

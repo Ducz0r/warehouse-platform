@@ -16,7 +16,7 @@ namespace Warehouse.Server.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.12");
 
-            modelBuilder.Entity("Warehouse.Server.Domain.Customer", b =>
+            modelBuilder.Entity("Warehouse.Server.Data.Domain.Customer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
