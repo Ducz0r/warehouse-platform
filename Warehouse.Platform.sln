@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Server", "Warehouse.Server\Warehouse.Server.csproj", "{E2CCBD0B-38F2-4C51-8B4D-9DD6B8758A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.AdministrationApp", "Warehouse.AdministrationApp\Warehouse.AdministrationApp.csproj", "{FF2B6077-B6FC-449D-9231-2C186E7B0463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.AdministrationApp", "Warehouse.AdministrationApp\Warehouse.AdministrationApp.csproj", "{FF2B6077-B6FC-449D-9231-2C186E7B0463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.ClientApp", "Warehouse.ClientApp\Warehouse.ClientApp.csproj", "{36A31FE4-A35A-48DA-81A1-D42E2FDC914A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FF2B6077-B6FC-449D-9231-2C186E7B0463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF2B6077-B6FC-449D-9231-2C186E7B0463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF2B6077-B6FC-449D-9231-2C186E7B0463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36A31FE4-A35A-48DA-81A1-D42E2FDC914A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36A31FE4-A35A-48DA-81A1-D42E2FDC914A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A31FE4-A35A-48DA-81A1-D42E2FDC914A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36A31FE4-A35A-48DA-81A1-D42E2FDC914A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
