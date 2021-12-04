@@ -1,13 +1,13 @@
 export class CustomerModel {
-  guid: string;
+  id: string;
   name: string;
   quantity: number;
 
   constructor(
-    guid: string,
+    id: string,
     name: string,
     quantity: number) {
-    this.guid = guid;
+    this.id = id;
     this.name = name;
     this.quantity = quantity;
   }
