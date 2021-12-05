@@ -19,7 +19,8 @@ namespace Warehouse.Server.Auth
     {
         private const string BEARER_SECRET = "1f0971861e89567ba2182f11616e97fc5413982ac4074d44aec82d7a37b467f0";
 
-        private IMediator _mediator;
+        private readonly IMediator _mediator;
+
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
@@ -50,7 +51,7 @@ namespace Warehouse.Server.Auth
             }
 
             // Check for basic HTTP authentication
-            ClaimsPrincipal principal = null;
+            ClaimsPrincipal principal;
             try
             {
                 var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);

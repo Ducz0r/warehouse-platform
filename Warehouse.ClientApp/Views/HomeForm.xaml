@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Warehouse.ClientApp.Views.HomeForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Warehouse.ClientApp.Views"
+             xmlns:viewmodels="clr-namespace:Warehouse.ClientApp.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=viewmodels:HomeFormViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,10,0,0"
+                   VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"
+                   Name="HomeHeading" Text="Warehouse Client > Home" />
+        <TextBlock Height="50" HorizontalAlignment="Left" Margin="24,48,0,0"
+                   VerticalAlignment="Top" FontSize="12" Padding="5"
+                   Name="HomeDescription">
+            From this page, you can increase your warehouse quantity.
+        </TextBlock>
+
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="29,100,0,0"
+                   VerticalAlignment="Top" Width="110"
+                   Name="NameLabel" Text="Customer Name:" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="130,100,0,0"
+                   VerticalAlignment="Top" Width="247"
+                   Name="NameText" Text="{Binding Name, Mode=OneWay}" />
+
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="29,140,0,0"
+                   VerticalAlignment="Top" Width="110"
+                   Name="CurrentQuantityLabel" Text="Current Quantity:" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="130,140,0,0"
+                   VerticalAlignment="Top" Width="247"
+                   Name="CurrentQuantityText" Text="{Binding CurrentQuantityText, Mode=OneWay}" />
+
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="29,180,0,0"
+                   VerticalAlignment="Top" Width="110"
+                   Name="QuantityText" Text="Increase Quantity:" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="130,180,0,0"
+                 VerticalAlignment="Top" Width="247" PreviewTextInput="NumberValidationTextBox"
+                 Name="QuantityIncreaseInput" Text="{Binding QuantityIncrease, Mode=TwoWay}"
+                 IsEnabled="{Binding IsProcessing, Mode=OneWay, Converter={StaticResource InverseBooleanConverter}}" />
+
+        <Button Height="23" HorizontalAlignment="Left" Margin="130,220,0,0"
+                VerticalAlignment="Top" Width="104"
+                Name="UpdateButton" Content="Update"
+                IsEnabled="{Binding IsProcessing, Mode=OneWay, Converter={StaticResource InverseBooleanConverter}}"
+                Command="{Binding UpdateCommand}" />
+
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="130,260,0,0"
+                   VerticalAlignment="Top" Width="247"
+                   OpacityMask="{Binding IsError, Mode=OneWay, Converter={StaticResource IsErrorBooleanToContextualColorConverter}}"
+                   Foreground="{Binding IsError, Mode=OneWay, Converter={StaticResource IsErrorBooleanToContextualColorConverter}}"
+                   Name ="Message" Text="{Binding Message, Mode=OneWay}" />
+    </Grid>
+</UserControl>

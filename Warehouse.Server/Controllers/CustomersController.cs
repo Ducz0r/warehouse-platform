@@ -50,6 +50,40 @@ namespace Warehouse.Server.Controllers
         }
 
         /// <summary>
+        /// Find a customer by name.
+        /// </summary>
+        /// <returns>Customer object</returns>
+        [HttpPost("find/by-name")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public async Task<IActionResult> FindByName([FromBody] JsonElement json)
+        {
+            string name;
+
+            try
+            {
+                name = json.GetProperty("name").GetString();
+            }
+            catch (Exception ex) when (ex is KeyNotFoundException || ex is InvalidOperationException)
+            {
+                return BadRequest();
+            }
+
+            var dataResponse = await _mediator.Send(new FindCustomerByName.Request(name), CancellationToken.None);
+
+            if (dataResponse.IsSuccess)
+            {
+                return Ok(new CustomerModel(dataResponse.Object));
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        /// <summary>
         /// Increase individual customer's warehouse quantity.
         /// </summary>
         /// <param name="id">Customer's GUID</param>

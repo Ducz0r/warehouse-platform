@@ -19,6 +19,8 @@ namespace Warehouse.Server.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customers", x => x.Id);
+                    table.UniqueConstraint("UQ_Customers_Id", x => x.Id);
+                    table.UniqueConstraint("UQ_Customers_Name", x => x.Name);
                 });
         }
 
