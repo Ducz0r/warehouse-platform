@@ -2,10 +2,12 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Reflection;
 using Warehouse.Server.Auth;
 using Warehouse.Server.Data;
@@ -29,7 +31,13 @@ namespace Warehouse.Server
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", options => { });
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddDbContext<DataContext>();
+            services.AddDbContext<DataContext>(options =>
+            {
+                var folder = Environment.SpecialFolder.CommonApplicationData;
+                var path = Environment.GetFolderPath(folder);
+                var dbPath = $"{path}{System.IO.Path.DirectorySeparatorChar}warehouse.db";
+                options.UseSqlite($"Data Source={dbPath}");
+            });
             services.AddTransient<IDataContext>(s => s.GetService<DataContext>());
             services.AddSwaggerGen(c =>
             {

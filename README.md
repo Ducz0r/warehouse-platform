@@ -66,10 +66,15 @@ npm install
 
 The client application can be started from Visual Studio. Since this is a standard WPF desktop application, there is nothing special going on there.
 
+## Testing
+
+Right now, only some tests for the Server project exist. Currently, the `Warehouse.Server.Tests` project only includes some end-to-end REST API controller endpoint tests. To run tests, right-click the project and click on `"Run Tests"`.
+
 ## Remaining work
 
 Oh boy! Since this task was time-limited to 2 days, there are A TON of things left to be desired. The following is a non-complete list of remaining "TODOs":
 
+- Add testing Server, Client projects; possibly also to Administration App
 - Server
   - **Refactor authentication to use OpenID Connect / JWT tokens, perhaps Microsoft Identity framework**
   - Better error-handling on the REST side
